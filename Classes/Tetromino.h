@@ -11,16 +11,7 @@
 
 
 @interface Tetromino : CocosNode {
-	
-//	enum tetrominoTypes {
-//		kLetterI,
-//		kLetterO,
-//		kLetterS,
-//		kLetterZ,
-//		kLetterL,
-//		kLetterJ,
-//		kLetterT
-//	} 
+
 	enum tetrominoTypes tetrominoType;
 	BOOL stuck;
 	

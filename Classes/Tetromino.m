@@ -24,7 +24,6 @@
 	if ((self = [super init])) {
 		tetrominoType = (arc4random() % 7);
 		
-		
 		for (int i = 0; i < 4; i++) {
 			Block *tempBlock = [Block newBlock:tetrominoType];
 			[self addChild:tempBlock z:2];
@@ -44,8 +43,6 @@
 	self.boardX = firstBlock.boardX;
 	self.boardY = firstBlock.boardY;
 	self.anchorPoint = ccp(0,0);
-	
-	
 }
 
 - (void)setShape

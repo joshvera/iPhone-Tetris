@@ -1005,6 +1005,7 @@
 				OTHER_LDFLAGS = "";
 				PREBINDING = NO;
 				PRODUCT_NAME = Tetris;
+				SDKROOT = iphoneos3.1;
 				WARNING_CFLAGS = "-Wall";
 			};
 			name = Debug;
