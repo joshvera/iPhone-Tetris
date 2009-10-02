@@ -87,7 +87,8 @@
 
 - (void)redrawPositionOnBoard 
 {
-	[self runAction:[MoveTo actionWithDuration:1.0/45.0 position:COMPUTE_X_Y(boardX, boardY)]];
+	//[self runAction:[MoveTo actionWithDuration:1.0/45.0 position:COMPUTE_X_Y(boardX, boardY)]];
+	self.position = COMPUTE_X_Y(boardX, boardY);
 }
 
 - (void)moveUp
