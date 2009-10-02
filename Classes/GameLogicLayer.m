@@ -66,6 +66,7 @@
 
 - (void)createNewTetromino
 {
+
 	
 	Tetromino *tempTetromino = [[Tetromino alloc] init];
 
@@ -78,6 +79,22 @@
 	[tempTetromino release];
 
 }
+	 
+// Overriding method to remove Tetromino and add Blocks to Layer 
+//-(void) removeChild: (CocosNode*)child cleanup:(BOOL)cleanup
+//{
+//	if ([child isEqual:userTetromino]) {
+//		for (Block *currentBlock in userTetromino.children) {
+//			[currentBlock retain];
+//
+//			[userTetromino removeChild:currentBlock cleanup:YES];
+//			[self addChild:currentBlock];
+//
+//		}
+//	}
+//	
+//	[super removeChild:child cleanup:cleanup];
+//}
 
 - (void)tryToCreateNewTetromino
 {
@@ -89,7 +106,9 @@
 			}
 		}
 	}
-	
+//	if (userTetromino.stuck) {
+//		[self removeChild:userTetromino	cleanup:YES];
+//	}
 	[self createNewTetromino];
 }
 
@@ -178,10 +197,28 @@
 
 - (void)moveTetrominoLeft
 {
-	[userTetromino.children sortUsingSelector:@selector(compareWithBlock:)];
-	for (Block *currentBlock in userTetromino.children) {
-		[self moveBlockLeft:currentBlock];
+	if ([self canMoveTetrominoByX:-1]) {
+		
+		
+		[userTetromino.children sortUsingSelector:@selector(compareWithBlock:)];
+		for (Block *currentBlock in userTetromino.children) {
+			[self moveBlockLeft:currentBlock];
+		}
 	}
+}
+	
+
+- (void)moveTetrominoRight
+{
+	if ([self canMoveTetrominoByX:1]) {
+		
+		
+		NSEnumerator *blockEnumerator = [userTetromino.children reverseObjectEnumerator];
+		for (Block *currentBlock in blockEnumerator) {
+			[self moveBlockRight:currentBlock];
+		}
+	}
+	
 }
 
 - (BOOL)canMoveTetrominoByX:(int)offSetX
@@ -207,18 +244,6 @@
 	return YES;
 }
 
-- (void)moveTetrominoRight
-{
-	if ([self canMoveTetrominoByX:1]) {
-		
-		
-		NSEnumerator *blockEnumerator = [userTetromino.children reverseObjectEnumerator];
-		for (Block *currentBlock in blockEnumerator) {
-			[self moveBlockRight:currentBlock];
-		}
-	}
-
-}
 														  
 
 //
@@ -332,7 +357,6 @@
 - (void)dealloc
 {
 	[self removeAllChildrenWithCleanup:YES];
-	[userTetromino release];
 	[difficultyLabel release];
 	[scoreLabel release];
 	[super dealloc];
