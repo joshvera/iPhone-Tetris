@@ -109,6 +109,11 @@
 	[self redrawPositionOnBoard];
 }
 
+- (void)moveByX:(int)offsetX
+{
+	boardX += offsetX;
+	[self redrawPositionOnBoard];
+}
 - (void)moveRight
 {
 	boardX += 1;

@@ -19,8 +19,6 @@
 
 - (void)moveBlocksDown;
 - (void)moveBlockDown:(Block *)block;
-- (void)moveBlockLeft:(Block *)block;
-- (void)moveBlockRight:(Block *)block;
 
 - (void)gameOver;
 - (void)moveTetrominoDown;
@@ -31,6 +29,8 @@
 - (void)moveTetrominoRight;
 
 - (BOOL)canMoveTetrominoByX:(int)offSetX;
+
+- (void)moveBlock:(Block *)block byX:(int)offsetX;
 @end
 
 @implementation GameLogicLayer
@@ -202,7 +202,7 @@
 		
 		[userTetromino.children sortUsingSelector:@selector(compareWithBlock:)];
 		for (Block *currentBlock in userTetromino.children) {
-			[self moveBlockLeft:currentBlock];
+			[self moveBlock:currentBlock byX:-1];
 		}
 	}
 }
@@ -215,7 +215,7 @@
 		
 		NSEnumerator *blockEnumerator = [userTetromino.children reverseObjectEnumerator];
 		for (Block *currentBlock in blockEnumerator) {
-			[self moveBlockRight:currentBlock];
+			[self moveBlock:currentBlock byX:1];
 		}
 	}
 	
@@ -323,24 +323,16 @@
 	//[block moveDown];
 }
 
-- (void)moveBlockLeft:(Block *)block
+
+//Helper function to recalculate left and right block positions
+- (void)moveBlock:(Block *)block byX:(int)offsetX
 {
-	if (nil == board[block.boardX - 1][block.boardY]) {
+	if (board[block.boardX + offsetX][block.boardY] == nil) {
 		board[block.boardX][block.boardY] = nil;
-		board[block.boardX - 1][block.boardY] = block;
-		block.moveLeft;
+		board[block.boardX + offsetX][block.boardY] = block;
+		
+		[block moveByX:offsetX];
 	}
-
-}
-
-- (void)moveBlockRight:(Block *)block
-{
-	if (nil == board[block.boardX + 1][block.boardY]) {
-		board[block.boardX][block.boardY] = nil;
-		board[block.boardX + 1][block.boardY] = block;
-		block.moveRight;
-	}
-
 }
 
 - (void)gameOver

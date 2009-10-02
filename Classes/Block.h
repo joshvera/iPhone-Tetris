@@ -36,6 +36,7 @@ enum tetrominoTypes {
 - (void)moveDown;
 - (void)moveLeft;
 - (void)moveRight;
+- (void)moveByX:(int)offsetX;
 - (NSComparisonResult)compareWithBlock:(Block *)block;
 
 @end

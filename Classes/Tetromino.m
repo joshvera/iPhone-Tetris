@@ -65,8 +65,6 @@
 					currentBlock.boardX = index+3;
 					currentBlock.boardY = 1;
 				}
-				
-
 				break;
 			case kLetterS:
 				if (index == 0 || index == 1) {
@@ -120,9 +118,6 @@
 		currentBlock.position = COMPUTE_X_Y(currentBlock.boardX, currentBlock.boardY);
 		index++;
 	}
-
-
-
 }
 
 
@@ -173,28 +168,6 @@
 	[super dealloc];
 }
 
-
-//- (void)setBoardX:(int)x
-//{
-//
-//	boardX = x;
-//
-//	for (Block *currentBlock in self.children) {
-//		
-//		currentBlock.boardX = self.boardX - currentBlock.boardX;
-//	}
-//
-//
-//}
-//
-//- (void)setBoardY:(int)y
-//{
-//	boardY = y;
-//	for (Block *currentBlock in self.children) {
-//		currentBlock.boardY += self.boardY - currentBlock.boardY;
-//	}
-//}
-
 - (CGPoint)leftMostPosition
 {
 
@@ -218,6 +191,5 @@
 	}
 	return myRightPosition;
 }
-
 
 @end
