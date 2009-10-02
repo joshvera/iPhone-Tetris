@@ -1,0 +1,7 @@
+A Little Cocos2d Tetris Clone by Josh Aburto
+
+With some help from the Puyo Cocos2d chapter in "iPhone Game Projects"
+
+And inspired by Tris.
+
+To Do: Change controls from touch to move to touch to drag. Block rotations. Scores, levels, correct frame rate updates. It's running a bit jerky at the moment.
