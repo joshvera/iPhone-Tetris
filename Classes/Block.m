@@ -26,27 +26,27 @@
 {
 	NSString *filename = nil, *color = nil;
 	Block *temp = nil;
-	
+
 	switch (blockType) {
-		case 0:
+		case kLetterI:
 			color = @"red";
 			break;
-		case 1:
+		case kLetterO:
 			color = @"blue";
 			break;
-		case 2:
+		case kLetterS:
 			color = @"orange";
 			break;
-		case 3:
+		case kLetterZ:
 			color = @"yellow";
 			break;
-		case 4:
+		case kLetterL:
 			color = @"magenta";
 			break;
-		case 5:
+		case kLetterJ:
 			color = @"cyan";
 			break;
-		case 6:
+		case kLetterT:
 			color = @"green";
 			break;
 		default:
@@ -65,21 +65,29 @@
 	
 }
 
+- (NSComparisonResult)compareWithBlock:(Block *)block
+{
+	return [[NSNumber numberWithInt:self.boardX]
+			compare:[NSNumber numberWithInt:block.boardX]];
+}
+			
+
 
 - (void)initializeDefaults
 {
-	[self setAnchorPoint: ccp(0,0)];
-	[self setPosition: ccp(0,0)];
-	[self setOpacity:255];
-	[self setStuck:NO];
-	[self setDisappearing:NO];
-	[self setBoardX:0];
-	[self setBoardY:0];
+	
+	self.anchorPoint = ccp(0,0);
+	self.position = ccp(0,0);
+	self.opacity = 255;
+	self.stuck = NO;
+	self.disappearing = NO;
+	self.boardX = 0;
+	self.boardY = 0;
 }
 
 - (void)redrawPositionOnBoard 
 {
-	[self setPosition: COMPUTE_X_Y(boardX, boardY)];
+	[self runAction:[MoveTo actionWithDuration:1.0/45.0 position:COMPUTE_X_Y(boardX, boardY)]];
 }
 
 - (void)moveUp

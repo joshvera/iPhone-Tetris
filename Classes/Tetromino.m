@@ -14,19 +14,19 @@
 @end
 
 @implementation Tetromino
-@synthesize blockArray;
 @synthesize tetrominoType;
+@synthesize boardX;
+@synthesize boardY;
+
 
 - (id)init
 {
 	if ((self = [super init])) {
 		tetrominoType = (arc4random() % 7);
 		
-		blockArray = [[NSMutableArray alloc] initWithCapacity:4];
 		
 		for (int i = 0; i < 4; i++) {
 			Block *tempBlock = [Block newBlock:tetrominoType];
-			[blockArray addObject:tempBlock];
 			[self addChild:tempBlock z:2];
 			[tempBlock release];
 		}
@@ -40,6 +40,10 @@
 {
 	self.stuck = NO;
 	[self setShape];
+	Block *firstBlock = [children objectAtIndex:0];
+	self.boardX = firstBlock.boardX;
+	self.boardY = firstBlock.boardY;
+	self.anchorPoint = ccp(0,0);
 	
 	
 }
@@ -47,7 +51,7 @@
 - (void)setShape
 {	
 	NSUInteger index = 0;
-	for (Block *currentBlock in blockArray){
+	for (Block *currentBlock in self.children){
 		
 		switch (tetrominoType) {
 			case kLetterI:
@@ -59,10 +63,12 @@
 				if (index == 0 || index == 1) {
 					currentBlock.boardX = index+5;
 					currentBlock.boardY = 0;
+					
 				} else {
 					currentBlock.boardX = index+3;
 					currentBlock.boardY = 1;
 				}
+				
 
 				break;
 			case kLetterS:
@@ -118,11 +124,14 @@
 		index++;
 	}
 
+
+
 }
+
 
 - (BOOL)stuck
 {
-	for (Block *block in blockArray) {
+	for (Block *block in self.children) {
 			stuck = block.stuck;
 	}
 	return stuck;
@@ -131,22 +140,69 @@
 - (void)setStuck:(BOOL)stuckValue
 {
 	stuck = stuckValue;
-	for (Block *block in blockArray) {
+	for (Block *block in self.children) {
 		block.stuck = stuckValue;
 	}
 }
 
+- (BOOL)isBlockInTetromino:(id)block
+{
+	for (Block *currentBlock in self.children) {
+		if ([currentBlock isEqual:block]) {
+			return YES;
+		}
+		
+	}
+	return NO;
+}
+
+- (void)moveTetrominoDown
+{
+	NSArray* reversedChildren = [[children reverseObjectEnumerator] allObjects];
+	
+	for (Block *currentBlock in reversedChildren) {
+		[currentBlock moveDown];
+	}
+	self.boardY += 1;
+	NSLog(@"%d, %d",COMPUTE_X(self.boardX), COMPUTE_Y(self.boardY));
+	//[self runAction:[MoveTo actionWithDuration:1.0/45.0 position:COMPUTE_X_Y(self.boardX, self.boardY)]];
+	
+	
+}
+
 - (void)dealloc
 {
-	[blockArray release];
+
 	[super dealloc];
 }
 
 
+//- (void)setBoardX:(int)x
+//{
+//
+//	boardX = x;
+//
+//	for (Block *currentBlock in self.children) {
+//		
+//		currentBlock.boardX = self.boardX - currentBlock.boardX;
+//	}
+//
+//
+//}
+//
+//- (void)setBoardY:(int)y
+//{
+//	boardY = y;
+//	for (Block *currentBlock in self.children) {
+//		currentBlock.boardY += self.boardY - currentBlock.boardY;
+//	}
+//}
+
 - (CGPoint)leftMostPosition
 {
-	CGPoint	myLeftPosition;
-	for (Block *currentBlock in blockArray) {
+
+	CGPoint	myLeftPosition = ccp(999,999);
+	for (Block *currentBlock in self.children) {
 		if ( myLeftPosition.x > currentBlock.boardX) {
 			myLeftPosition = ccp(currentBlock.boardX, currentBlock.boardY);
 		}
@@ -157,13 +213,14 @@
 
 - (CGPoint)rightMostPosition
 {
-	CGPoint myRightPosition;
-	for (Block *currentBlock in blockArray) {
+	CGPoint myRightPosition = ccp(-1, -1);
+	for (Block *currentBlock in self.children) {
 		if (myRightPosition.x < currentBlock.boardX) {
 			myRightPosition = ccp(currentBlock.boardX, currentBlock.boardY);
 		}
 	}
 	return myRightPosition;
 }
+
 
 @end

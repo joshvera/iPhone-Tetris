@@ -29,6 +29,10 @@
 	Label *scoreLabel;
 	Label *difficultyLabel;
 	
+	CGPoint dragStartPoint;
+	CGPoint lastDragMove;
+	int lastDragStartTime;
+	
 	
 }
 

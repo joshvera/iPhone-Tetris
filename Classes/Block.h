@@ -8,6 +8,15 @@
 
 #import "cocos2d.h"
 
+enum tetrominoTypes {
+	kLetterI,
+	kLetterO,
+	kLetterS,
+	kLetterZ,
+	kLetterL,
+	kLetterJ,
+	kLetterT
+} tetrominoType;
 
 @interface Block : Sprite {
 	int boardX, boardY;
@@ -17,8 +26,8 @@
 
 }
 
-@property int boardX;
-@property int boardY;
+@property (readwrite, assign) int boardX;
+@property (readwrite, assign) int boardY;
 @property BOOL stuck;
 @property BOOL disappearing;
 
@@ -27,6 +36,7 @@
 - (void)moveDown;
 - (void)moveLeft;
 - (void)moveRight;
+- (NSComparisonResult)compareWithBlock:(Block *)block;
 
 @end
 

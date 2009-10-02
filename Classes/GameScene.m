@@ -16,7 +16,7 @@
 -(id) init
 {
 	if ((self = [super init])) {
-		Sprite *bg = [Sprite spriteWithFile:@"background.jpg"];
+		Sprite *bg = [Sprite spriteWithFile:@"tetris_bg.jpg"];
 		[bg setPosition:ccp(160,240)];
 		[self addChild:bg z:0];
 		

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		1F3B9A2D0EF2145700286867 /* TetrisAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F3B9A2B0EF2145700286867 /* TetrisAppDelegate.m */; };
+		37AF197D1073EF6300E5E89F /* tetris_bg.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37AF197C1073EF6300E5E89F /* tetris_bg.jpg */; };
 		37BC6F76106EE4D200EF5C76 /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC6F75106EE4D200EF5C76 /* GameScene.m */; };
 		37BC6F8B106EE72300EF5C76 /* background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 37BC6F8A106EE72300EF5C76 /* background.jpg */; };
 		37BC6FAA106EEC8000EF5C76 /* Block.m in Sources */ = {isa = PBXBuildFile; fileRef = 37BC6FA9106EEC8000EF5C76 /* Block.m */; };
@@ -207,6 +208,7 @@
 		1F3B9A2C0EF2145700286867 /* TetrisAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TetrisAppDelegate.h; path = Classes/TetrisAppDelegate.h; sourceTree = SOURCE_ROOT; };
 		1F3B9A820EF2151B00286867 /* Tetris_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tetris_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		37AF197C1073EF6300E5E89F /* tetris_bg.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = tetris_bg.jpg; sourceTree = "<group>"; };
 		37BC6F74106EE4D200EF5C76 /* GameScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
 		37BC6F75106EE4D200EF5C76 /* GameScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
 		37BC6F8A106EE72300EF5C76 /* background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = background.jpg; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				37AF197C1073EF6300E5E89F /* tetris_bg.jpg */,
 				37E45F6310717B9500B2E7D9 /* gameover.jpeg */,
 				37E45DBE10715E1600B2E7D9 /* blue.png */,
 				37E45DBF10715E1600B2E7D9 /* cyan.png */,
@@ -876,6 +879,7 @@
 				37E45DCA10715E1600B2E7D9 /* red.png in Resources */,
 				37E45DCB10715E1600B2E7D9 /* yellow.png in Resources */,
 				37E45F6410717B9500B2E7D9 /* gameover.jpeg in Resources */,
+				37AF197D1073EF6300E5E89F /* tetris_bg.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
