@@ -29,25 +29,25 @@
 
 	switch (blockType) {
 		case kLetterI:
-			color = @"red";
-			break;
-		case kLetterO:
-			color = @"blue";
-			break;
-		case kLetterS:
-			color = @"orange";
-			break;
-		case kLetterZ:
-			color = @"yellow";
-			break;
-		case kLetterL:
-			color = @"magenta";
-			break;
-		case kLetterJ:
 			color = @"cyan";
 			break;
-		case kLetterT:
+		case kLetterO:
+			color = @"yellow";
+			break;
+		case kLetterS:
 			color = @"green";
+			break;
+		case kLetterZ:
+			color = @"red";
+			break;
+		case kLetterL:
+			color = @"orange";
+			break;
+		case kLetterJ:
+			color = @"blue";
+			break;
+		case kLetterT:
+			color = @"magenta";
 			break;
 		default:
 			break;
